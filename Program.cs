@@ -4,13 +4,14 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        //Создаем карту
+        // Создаем карту
         Map map = new(10, 10);
         Player player = new();
         Render render = new(map, player);
         while (true)
         {
-            Console.WriteLine($"Здравствуйте!\nКарта размером {map.XLimit}x{map.YLimit}" +
+            Console.WriteLine($"Здравствуйте!" +
+                              $"\nКарта размером {map.XLimit}x{map.YLimit}" +
                               $"\nВведите желаемые координаты игрока:");
             Console.WriteLine("Для Х - ");
             int NewX = int.Parse(Console.ReadLine());
@@ -18,10 +19,11 @@ internal class Program
             {
                 Console.WriteLine("Вы вышли за пределы!");
                 player.X = -1;
+                break;
             }
             else
             {
-                player.X = NewX - 1;
+                player.X = NewX - 1; // -1 для корректной отрисовки в массиве карты
             }
 
             Console.WriteLine("Для Y - ");
@@ -30,13 +32,14 @@ internal class Program
             {
                 Console.WriteLine("Вы вышли за пределы!");
                 player.Y = -1;
+                break;
             }
             else
             {
-                player.Y = NewY - 1;
+                player.Y = NewY - 1; 
             }
 
-            //Выводим на экран карту
+            // Выводим на экран карту
             if (player.X < 0 || player.Y < 0)
             {
                 Console.WriteLine("Вы вне карты!");
@@ -47,9 +50,9 @@ internal class Program
                 render.ShowMap();
             }
 
-            //Чистим окно вывода
+            // Чистим окно вывода
             Console.ReadLine();
-            Console.Clear();
+            Console.Write("\f\u001bc\x1B[3J");  
         }
     }
 }

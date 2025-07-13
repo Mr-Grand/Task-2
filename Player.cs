@@ -27,14 +27,4 @@ public class Player
             else Console.WriteLine($"Map size cannot be more than {Map._mapLimit}");
         }
     }
-
-    public void MovePlayer(int x, int y)
-    {
-        //возвращаем к свойствам для использования логики
-        X = x;
-        Y = y;
-
-        _x = X;
-        _y = Y;
-    }
 }
