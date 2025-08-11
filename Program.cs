@@ -6,16 +6,18 @@ internal class Program
     {
         // Создаем карту
         Map map = new(10, 10);
-        Player player = new();
+        Player player = new(map);
         Render render = new(map, player);
+        
         while (true)
         {
             Console.WriteLine($"Здравствуйте!" +
                               $"\nКарта размером {map.XLimit}x{map.YLimit}" +
                               $"\nВведите желаемые координаты игрока:");
+            
             Console.WriteLine("Для Х - ");
-            int NewX = int.Parse(Console.ReadLine());
-            if (NewX <= 0 || NewX > map.XLimit)
+            int newX = int.Parse(Console.ReadLine());
+            if (newX <= 0 || newX > map.XLimit)
             {
                 Console.WriteLine("Вы вышли за пределы!");
                 player.X = -1;
@@ -23,12 +25,12 @@ internal class Program
             }
             else
             {
-                player.X = NewX - 1; // -1 для корректной отрисовки в массиве карты
+                player.X = newX - 1; // -1 для корректной отрисовки в массиве карты
             }
 
             Console.WriteLine("Для Y - ");
-            int NewY = int.Parse(Console.ReadLine());
-            if (NewY <= 0 || NewY > map.YLimit)
+            int newY = int.Parse(Console.ReadLine());
+            if (newY <= 0 || newY > map.YLimit)
             {
                 Console.WriteLine("Вы вышли за пределы!");
                 player.Y = -1;
@@ -36,7 +38,7 @@ internal class Program
             }
             else
             {
-                player.Y = NewY - 1; 
+                player.Y = newY - 1; 
             }
 
             // Выводим на экран карту

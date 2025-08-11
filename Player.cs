@@ -4,16 +4,17 @@ public class Player
 {
     private int _x;
     private int _y;
-    public readonly char PlayerIcon = '@';
+    private readonly Map _map;
 
     public int X
     {
         get => _x;
         set
         {
-            if (value <= Map._mapLimit)
+            if (value > 0 && value <= _map.XLimit)
                 _x = value;
-            else Console.WriteLine($"Map size cannot be more than {Map._mapLimit}");
+            else 
+                Console.WriteLine($"You should be in 0 - {_map.XLimit} diapason");
         }
     }
 
@@ -22,9 +23,15 @@ public class Player
         get => _y;
         set
         {
-            if (value <= Map._mapLimit)
+            if (value > 0 && value <= _map.YLimit)
                 _y = value;
-            else Console.WriteLine($"Map size cannot be more than {Map._mapLimit}");
+            else 
+                Console.WriteLine($"You should be in 0 - {_map.XLimit} diapason");
         }
+    }
+
+    public Player(Map map)
+    {
+        _map = map;
     }
 }
