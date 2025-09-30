@@ -2,10 +2,10 @@
 
 public class Render
 {
-    private readonly Map _map;
-    private readonly Player _player;
     private const char PlayerIcon = '@';
     private const char MapIcon = '.';
+    private readonly Map _map;
+    private readonly Player _player;
 
     public Render(Map map, Player player)
     {
